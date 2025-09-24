@@ -29,7 +29,7 @@ export class MovieFacade {
     ).subscribe();
   }
 
-  searchMovies(query: string, page = 1) {
+  searchMovies(query: string, page = 1, genre?: string, year?: string, sort?: string) {
     this.state.setLoading(true);
     this.api.searchMovies(query, page).pipe(
       tap(response => {

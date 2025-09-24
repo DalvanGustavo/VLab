@@ -1,0 +1,12 @@
+<!-- src/app/pages/movie-marathon/marathon-list.component.html -->
+<h2>Lista da Maratona</h2>
+<p>Duração total: {{ getMarathonDuration() }}</p>
+
+<ul>
+    <li *ngFor="let movie of marathonList">
+        {{ movie.title }} ({{ movie.runtime || 0 }} min)
+        <button (click)="removeFromMarathon(movie)">Remover</button>
+    </li>
+</ul>
+
+<button (click)="goBack()">Voltar</button>

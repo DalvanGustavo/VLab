@@ -6,6 +6,14 @@
   width: 95vw;
 }
 
+.movie-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
 .search-bar {
   margin-bottom: 2rem;
 
@@ -40,5 +48,64 @@
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
     cursor: pointer;
+  }
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap; // Permite que os filtros se ajustem em telas menores
+  gap: 10px; // Espaço entre os filtros
+  margin-bottom: 20px; // Espaço abaixo dos filtros
+  align-items: center;
+  
+  button{
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: darkred;
+    }
+  }
+
+  select,
+  input {
+    padding: 8px 12px;
+    border: 1px solid black;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: red;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: #fff;
+    &:focus {
+      border-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      outline: none;
+    }
+  }
+    input::placeholder {
+      color: #fff;
+    }
+
+  select {
+    cursor: pointer;
+    background-color: rgb(255, 0, 0);
+  }
+
+  input[type="number"] {
+    width: 100px; // Ajusta o tamanho do input numérico
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column; // Em telas pequenas, os filtros ficam empilhados
+
+    input,
+    select {
+      width: 100%;
+    }
   }
 }
