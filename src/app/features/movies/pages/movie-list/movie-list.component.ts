@@ -4,14 +4,17 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
-import { CarouselItem } from '@shared/components/carousel/carousel.component';
+import { CarouselItem} from '@shared/components/carousel/carousel.component';
+import { RouterModule } from '@angular/router';
+import { CarouselComponent } from '@shared/components/carousel/carousel.component';
+
 
 @Component({
+  standalone: true,
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss'],
-  standalone: true,
-  imports: [CommonModule, AsyncPipe, MovieCardComponent, ReactiveFormsModule]
+  imports: [CommonModule, AsyncPipe, MovieCardComponent, ReactiveFormsModule, CarouselComponent, RouterModule]
 })
 export class MovieListComponent implements OnInit {
   facade = inject(MovieFacade);
