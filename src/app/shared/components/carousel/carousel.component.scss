@@ -56,12 +56,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     z-index: 10;
     transition: background-color 0.3s;
 
-    &:hover:not(:disabled) {
-      background: rgba(0, 0, 0, 0.9);
+    &:not(:disabled) {
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.9);
+      }
     }
 
     &:disabled {

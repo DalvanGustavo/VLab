@@ -1,4 +1,3 @@
-// src/app/pages/movie-list/movie-list.component.ts
 import { Component, OnInit, inject } from '@angular/core';
 import { MovieFacade } from '../../services/movie.facade';
 import { AsyncPipe, CommonModule } from '@angular/common';
@@ -114,7 +113,7 @@ export class MovieListComponent implements OnInit {
   }
 
   navigateToMarathon() {
-    console.log('[MovieList] navigating to /marathon');
-    this.router.navigate(['/marathon']);
+    console.log('[MovieList] navigating to /movies/marathon');
+    this.router.navigate(['/movies/marathon']);
   }
 }

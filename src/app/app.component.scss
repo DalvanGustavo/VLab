@@ -113,12 +113,11 @@ p {
 .app-main {
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 1rem;
   box-sizing: inherit;
   position: relative;
   min-height: calc(100vh - 80px);
+  
 }
 
 // Angular logo

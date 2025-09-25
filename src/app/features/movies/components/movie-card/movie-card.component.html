@@ -1,4 +1,3 @@
-<!-- src/app/components/movie-card/movie-card.component.html -->
 <div class="movie-card">
   <img [src]="getPosterUrl()" [alt]="movie.title" class="movie-poster" />
 
@@ -6,7 +5,8 @@
     <h3 class="movie-title">{{ movie.title }}</h3>
     <p class="movie-genre">{{ getGenre() }}</p>
 
-    <!-- botão chama onAddToMarathon e pára propagação -->
-    <button (click)="onAddToMarathon($event)">Adicionar à Maratona</button>
+    <!-- Mostrar botão Adicionar ou Remover -->
+    <button *ngIf="!showRemoveButton" (click)="onAddToMarathon($event)">Adicionar à Maratona</button>
+    <button *ngIf="showRemoveButton" (click)="onRemoveFromMarathon($event)">Remover</button>
   </div>
 </div>

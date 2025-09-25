@@ -25,23 +25,23 @@
   <button (click)="navigateToMarathon()">Ver Lista da Maratona</button>
 </div>
 
-<!-- CAROUSELS -->
-<div class="movie-list-container">
-  <app-carousel [title]="'Popular Movies'" [items]="popularMovies" [isExplore]="false" [exploreLink]="'/movies/popular'"
-    [canNavigateLeft]="true" [canNavigateRight]="true">
-  </app-carousel>
-
-  <app-carousel [title]="'Top Rated Movies'" [items]="topRatedMovies" [isExplore]="false"
-    [exploreLink]="'/movies/top-rated'" [canNavigateLeft]="true" [canNavigateRight]="true">
-  </app-carousel>
-
-  <app-carousel [title]="'Upcoming Movies'" [items]="upcomingMovies" [isExplore]="false"
-    [exploreLink]="'/movies/upcoming'" [canNavigateLeft]="true" [canNavigateRight]="true">
-  </app-carousel>
-</div>
-
 <!-- LISTA DE FILMES FILTRADOS -->
 <div class="movie-list">
   <app-movie-card *ngFor="let movie of filteredMovies" [movie]="movie" (addToMarathon)="addToMarathon($event)">
   </app-movie-card>
+</div>
+
+<!-- CAROUSELS -->
+<div class="movie-list-container">
+  <app-carousel [title]="'Popular Movies'" [items]="popularMovies" [isExplore]="false" [isDefaultCarousel]="true"
+    [exploreLink]="'/movies/popular'">
+  </app-carousel>
+
+  <app-carousel [title]="'Top Rated Movies'" [items]="topRatedMovies" [isExplore]="false" [isDefaultCarousel]="true"
+    [exploreLink]="'/movies/top-rated'">
+  </app-carousel>
+
+  <app-carousel [title]="'Upcoming Movies'" [items]="upcomingMovies" [isExplore]="false" [isDefaultCarousel]="true"
+    [exploreLink]="'/movies/upcoming'">
+  </app-carousel>
 </div>

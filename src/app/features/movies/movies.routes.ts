@@ -11,5 +11,4 @@ export const MOVIE_ROUTES: Routes = [
     path: 'marathon',
     component: MarathonListComponent
   }
-
 ];

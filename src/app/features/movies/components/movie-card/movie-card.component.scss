@@ -6,9 +6,9 @@
   overflow: hidden;
   transition: transform 0.2s;
   cursor: pointer;
-  height: 350px;
+  height: 550px;
   /* Reduzido para melhor proporção */
-  width: 220px;
+  width: 250px;
   /* Reduzido para caber mais cards em uma linha */
   justify-content: flex-start;
   align-items: center;
@@ -36,20 +36,23 @@ button{
 .movie-poster {
   width: 100%;
   /* O poster agora ocupa toda a largura do card */
-  height: 200px;
+  height: 100vh;
   /* Altura proporcional para o poster */
   object-fit: cover;
   /* Mantém proporção e corta se necessário */
+
 }
 
 .movie-info {
   padding: 0.5rem 1rem;
   text-align: center;
+  
 }
 
 .movie-title {
   font-size: 1rem;
   margin: 0 0 0.3rem 0;
+
 }
 
 .movie-overview {

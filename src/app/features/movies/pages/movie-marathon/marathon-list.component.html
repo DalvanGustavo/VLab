@@ -1,12 +1,12 @@
-<!-- src/app/pages/movie-marathon/marathon-list.component.html -->
-<h2>Lista da Maratona</h2>
-<p>Duração total: {{ getMarathonDuration() }}</p>
+<div class="marathon-header">
+    <button (click)="goBack()">Voltar</button>
+    <h2>Lista da Maratona</h2>
+    <p>Duração total: {{ getMarathonDuration() }}</p>
+</div>
 
-<ul>
-    <li *ngFor="let movie of marathonList">
-        {{ movie.title }} ({{ movie.runtime || 0 }} min)
-        <button (click)="removeFromMarathon(movie)">Remover</button>
-    </li>
-</ul>
+<div class="movie-list">
+    <app-movie-card *ngFor="let movie of marathonList" [movie]="movie" [showRemoveButton]="true"
+        (removeFromMarathon)="removeFromMarathon($event)">
+    </app-movie-card>
+</div>
 
-<button (click)="goBack()">Voltar</button>

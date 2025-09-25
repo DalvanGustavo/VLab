@@ -4,6 +4,8 @@
   min-height: 100vh;
   color: #fff;
   width: 95vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-list{
@@ -11,6 +13,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
 }
 
 

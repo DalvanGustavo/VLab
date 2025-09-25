@@ -1,6 +1,6 @@
-import { Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 export interface CarouselItem {
@@ -26,8 +26,6 @@ export class CarouselComponent implements AfterViewInit {
   @Input() items: CarouselItem[] = [];
   @Input() isExplore = false;
   @Input() exploreLink = '';
-  @Input() canNavigateLeft = false;
-  @Input() canNavigateRight = false;
   @Input() isDefaultCarousel = true;
   @Input() isCastCarousel = false;
 
@@ -36,30 +34,38 @@ export class CarouselComponent implements AfterViewInit {
 
   @ViewChild('carouselContainer', { static: false }) carouselContainer!: ElementRef;
 
+  private _canNavigateLeft = false;
+  private _canNavigateRight = false;
+
+  get canNavigateLeft() { return this._canNavigateLeft; }
+  get canNavigateRight() { return this._canNavigateRight; }
+
   ngAfterViewInit() {
-    this.updateNavigation();
+    // Aguarda o DOM renderizar
+    setTimeout(() => this.updateNavigation(), 0);
   }
 
   prevSlide() {
-    if (this.canNavigateLeft) {
-      this.carouselContainer.nativeElement.scrollLeft -= 300;
-      this.updateNavigation();
-      this.prevSlideEvent.emit();
-    }
+    const container = this.carouselContainer.nativeElement;
+    container.scrollLeft -= 300;
+    // Aguarda o scroll atualizar
+    setTimeout(() => this.updateNavigation(), 50);
+    this.prevSlideEvent.emit();
   }
 
   nextSlide() {
-    if (this.canNavigateRight) {
-      this.carouselContainer.nativeElement.scrollLeft += 300;
-      this.updateNavigation();
-      this.nextSlideEvent.emit();
-    }
+    const container = this.carouselContainer.nativeElement;
+    container.scrollLeft += 300;
+    // Aguarda o scroll atualizar
+    setTimeout(() => this.updateNavigation(), 50);
+    this.nextSlideEvent.emit();
   }
 
   private updateNavigation() {
     const container = this.carouselContainer.nativeElement;
-    this.canNavigateLeft = container.scrollLeft > 0;
-    this.canNavigateRight = container.scrollLeft < container.scrollWidth - container.clientWidth;
+    this._canNavigateLeft = container.scrollLeft > 0;
+    // Math.ceil para compensar arredondamento de pixels
+    this._canNavigateRight = container.scrollLeft < Math.ceil(container.scrollWidth - container.clientWidth);
   }
 
   getPosterUrl(imgSrc: string): string {

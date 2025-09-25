@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { Movie } from '../../types/movie.type';
 import { MarathonService } from './marathon.service';
 import { Router } from '@angular/router';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+
 
 @Component({
   standalone: true,
   selector: 'app-marathon-list',
   templateUrl: './marathon-list.component.html',
   styleUrls: ['./marathon-list.component.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule, MovieCardComponent]
 })
 export class MarathonListComponent implements OnInit {
   marathonService = inject(MarathonService);
@@ -38,4 +40,5 @@ export class MarathonListComponent implements OnInit {
   goBack() {
     this.router.navigate(['/']);
   }
+  
 }
